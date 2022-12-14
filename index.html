@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./ecf.css">
-    <script src="./ecf.js"></script>
+    <script src="./ecf.js" defer></script>
 
     <!-- Lien vers la Font Family Kanit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,36 +19,107 @@
 
 <body>
     <header>
-        <nav></nav>
+        <nav>
+            <div id="logo"></div>
+            <div id="title">
+                <div id="h1">
+                    <h1>DailyMeal</h1>
+                </div>
+                <div id="h2">
+                    <h2>A chaque jour suffit son repas</h2>
+                </div>
+            </div>
+            <div class="nav"></div>
+        </nav>
+
+        <section id="presentation">
+
+
+            <div class="firstDescription">
+                <p>Le moment de se mettre à <strong>table</strong> est pour vous
+                    une monotonie ou un calvaire quand il s’agit
+                    de décider du <strong>menu</strong> ?
+                    Vous n’avez pas d’inspiration pour le <strong>diner</strong>?
+                    Mais vous aimez <strong>cuisiner</strong>? </p>
+                <img src="./images/burger.jpg" alt="photo d'un burger">
+            </div>
+            <div class="secondDescription">
+                <img src="./images/plat_divers.jpg" alt="photo de plusieurs plats">
+
+                <p>DailyMeal vous propose 3 idées de <strong>plats</strong> différents par jour .
+                    A vous de faire votre choix !
+                    <br>
+                    Tout vous est donné pour faire de vos <strong>repas</strong> des moments privilégiés à partager en
+                    famille ou entre amis.
+                    Les photos sont accompagnés des listes d’<strong>ingrédients</strong> ainsi
+                    que des <strong>recettes</strong> accessible à tous.
+                </p>
+
+            </div>
+            <div class="cta"> <a href="#propositionsTitle"><button id="cta">A vos fourneaux !</button></a> </div>
+        </section>
     </header>
-    <section id="presentation">
-        <div class="firstDescription">
-            <p>Le moment de se mettre à <strong>table</strong> est pour vous
-                une monotonie ou un calvaire quand il s’agit
-                de décider du <strong>menu</strong> ?
-                Vous n’avez pas d’inspiration pour le <strong>diner</strong>?
-                Mais vous aimez <strong>cuisiner</strong>? </p>
-            <div class="firstPhotoDescription"></div>
-        </div>
-        <div class="secondDescription">
-            <div class="secondPhotoDescription"></div>
 
-            <p>DailyMeal vous propose 3 idées de <strong>plats</strong> différents par jour .
-                A vous de faire votre choix !
-                <br>
-                Tout vous est donné pour faire de vos <strong>repas</strong> des moments privilégiés à partager en
-                famille ou entre amis.
-                Les photos sont accompagnés des listes d’<strong>ingrédients</strong> ainsi
-                que des <strong>recettes</strong> accessible à tous.
-            </p>
+    <section id="meals">
+        <div id="propositionsTitle">Nos propositions</div>
+        <div class="propositions">
+            <div id="listChoice">
+
+                <div class="modal1">
+
+                    <div class="choice1">
+                        <div class="picMeal"></div>
+                        <div class="nameMeal"></div>
+                    </div>
+                </div>
+                <div class="modal2">
+                    <div class="choice2">
+                        <div class="picMeal"></div>
+                        <div class="nameMeal"></div>
+                    </div>
+                </div>
+                <div class="modal3">
+                    <div class="choice3">
+                        <div class="picMeal"></div>
+                        <div class="nameMeal"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta">
+                <button id="changer">Changer</button>
+            </div>
+            <div class="disclaimer">
+                <p><span class="remind">N’oubliez pas l’essentiel :</span> <span>“ Manger 5 fruits et légumes par
+                        jour</span></p>
+            </div>
 
         </div>
-        <div class="cta"> <a href=""><button id="cta">A vos fourneaux !</button></a> </div>
     </section>
-    <section id="plats">
-        <div class="propositions">Nos propositions</div>
-    </section>
-    <footer></footer>
+    <footer>
+        <div class="footerContain">
+            <div id="tools">
+                <div>Ce site a été créé avec les outils </div>
+                <div class="logoFooter">
+                    <img src="./images/html.png" alt="logo instagram">
+                    <img src="./images/css.png" alt="logo facebook">
+                    <img src="./images/script-java.png" alt="logo tweeter">
+                </div>
+            </div>
+            <div id="author">
+                <div>By Pierre YEM</div>
+                <div class="logoFooter"><img src="./images/linkedin.png" alt="logo linkedin"></div>
+            </div>
+            <div id="follow">
+                <div>Mes réseaux</div>
+                <div class="logoFooter">
+                    <img src="./images/instagram (2).png" alt="logo instagram">
+                    <img src="./images/facebook (1).png" alt="logo facebook">
+                    <img src="./images/twitter (1).png" alt="logo tweeter">
+                </div>
+            </div>
+        </div>
+        <div id="source">Source API <a href="https://www.themealdb.com/">TheMealDB</a> </div>
+    </footer>
 </body>
 
 </html>
