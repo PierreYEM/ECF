@@ -4,7 +4,8 @@ const randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php"
 
 
 let change = document.querySelector('#change'),
-    ingredients = document.querySelector('ingredients')
+    ingredients = document.querySelector('.ingredients'),
+    gauche = document.querySelector('.gauche');
 
 
 
@@ -44,39 +45,58 @@ for (let i = 0; i < list.length; i++) {
         list[i].style.cssText = " position:static;height: 90%;width: 80%"
         // html.appendChild(modal[i])
         modal[i].classList.toggle('modaltest');
+
     })
 
 };
 
 
-fetch(randomMeal)
+fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=52764")
     .then(data => data.json())
     .then(json => {
-        try{        console.log(json.meals[0].strIngredient[i]);
-}
-catch(error){console.log("ok");}
+        try {
+            console.log(json.meals[0].strIngredient + [i]);
+        }
+        catch (error) { console.log("ok"); }
 
 
-//
-let tab=new Array;
+        //Déclaration tableau des ingrédients
+        let tab = [json.meals[0].strIngredient1,
+        json.meals[0].strIngredient2,
+        json.meals[0].strIngredient3,
+        json.meals[0].strIngredient4,
+        json.meals[0].strIngredient5,
+        json.meals[0].strIngredient6,
+        json.meals[0].strIngredient7,
+        json.meals[0].strIngredient8,
+        json.meals[0].strIngredient9,
+        json.meals[0].strIngredient10,
+        json.meals[0].strIngredient11,
+        json.meals[0].strIngredient12,
+        json.meals[0].strIngredient13,
+        json.meals[0].strIngredient14,
+        json.meals[0].strIngredient15,
+        json.meals[0].strIngredient16,
+        json.meals[0].strIngredient17,
+        json.meals[0].strIngredient18,
+        json.meals[0].strIngredient19,
+        json.meals[0].strIngredient20,];
+
         for (let i = 0; i < 20; i++) {
 
-tab[i]="json.meals[0].strIngredient"+[i+1]
-;console.log(tab);
+
+        // console.log(json.meals[0]);
+        // console.log(json.meals[0].strIngredient18);
+        if (tab[i] !== null || tab[i] !== "") {
+
+
+            // console.log("ingrédient");
+            ingredients.innerHTML = ingredients.innerHTML+'<ul>' + '<li>' + tab[i] + '</li></ul>'
 
 
 
-
-
-            if (tab[i] !== "" || tab[i]!== "null") {
-
-
-
-                ingredients.innerHTML = '<ul>' + '<li>' +tab[i]+'</li></ul>'
-
-
-
-            }
+        }
+        else { console.log("vide"); }
         }
 
 

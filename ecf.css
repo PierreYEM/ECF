@@ -51,8 +51,14 @@ nav {
 }
 
 #logo {
+    display: flex;
+    align-items: center;
+}
 
-    /* background-color: green; */
+#logo img {
+
+    max-width: 170px;
+
 }
 
 #title {
@@ -236,6 +242,11 @@ h2 {
     align-items: center;
 }
 
+.gaucheModal {
+    width: 50%;
+}
+
+.receap {}
 
 
 .modal {
