@@ -1,34 +1,118 @@
-let choice1 = document.querySelector('.choice1'),
-    choice2 = document.querySelector('.choice2'),
-    choice3 = document.querySelector('.choice3'),
-    modal1 = document.querySelector('.modal1'),
-    modal2 = document.querySelector('.modal2'),
-    modal3 = document.querySelector('.modal3');
+///Déclaration des variables
 
-let list = [choice1, choice2, choice3],
-    modal = [modal1, modal2, modal3],
-    listCHoice = document.querySelector('#listChoice'),
-porpositions=document.querySelector('.propositions');
+const randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php"
 
+
+let change = document.querySelector('#change'),
+    ingredients = document.querySelector('ingredients')
+
+
+
+
+
+
+
+///Rangement de variable dans des tableaux
+let picture = [...document.querySelectorAll('.picMeal')],
+
+    ///Variables noms de plat///
+    nameMeal = [...document.querySelectorAll('.nameMeal')],
+
+    ///tableaux pour la modale
+    list = [...document.querySelectorAll('.choice')],
+    modal = [...document.querySelectorAll('.modal')];
+
+
+///Rassemblement des différents tableaux en 1 avec objets   
+let info = [{ picture, nameMeal }, { list, modal }];
+
+
+
+// Instructions
+///Ajout des 3 plats aléatoires via la fonction établie
+getRandomMeal();
+
+
+///Bouton changer = consiste à rafraichir la page afin que le fetch se relance
+change.addEventListener("click", () => getRandomMeal())
+
+console.log(info);
+///Ouverture de fenêtre modale   
 for (let i = 0; i < list.length; i++) {
 
-    list[i].addEventListener('click', () => {
+    list[i].addEventListener('click', (e) => {
         list[i].style.cssText = " position:static;height: 90%;width: 80%"
-        modal[i].classList.toggle('test');
-// listCHoice.style.cssText='height:100%;width:100%'
+        // html.appendChild(modal[i])
+        modal[i].classList.toggle('modaltest');
+    })
+
+};
+
+
+fetch(randomMeal)
+    .then(data => data.json())
+    .then(json => {
+        try{        console.log(json.meals[0].strIngredient[i]);
+}
+catch(error){console.log("ok");}
+
+
+//
+let tab=new Array;
+        for (let i = 0; i < 20; i++) {
+
+tab[i]="json.meals[0].strIngredient"+[i+1]
+;console.log(tab);
+
+
+
+
+
+            if (tab[i] !== "" || tab[i]!== "null") {
+
+
+
+                ingredients.innerHTML = '<ul>' + '<li>' +tab[i]+'</li></ul>'
+
+
+
+            }
+        }
+
+
+
+
+
+
+
+
+
 
     })
 
-}
 
 
-function createModale() {
-    let modalWrap = document.createElement('div');
-    modalWrap.classList.add('modalWrap');
+function getRandomMeal() {
+    for (let i = 0; i < picture.length; i++) {
 
-    listCHoice.appendChild(modalWrap)
-    modalWrap.appendChild(choice1);
+        fetch(randomMeal)
+            .then(data => data.json())
+            .then(json => {
+                info[0].picture[i].innerHTML = '<img src=' + json.meals[0].strMealThumb + ' alt="' + json.meals[0].strMeal + '">';
+                info[0].nameMeal[i].innerHTML = json.meals[0].strMeal
 
 
 
+
+
+
+
+
+
+
+
+
+                console.log(json)
+            })
+    }
 }

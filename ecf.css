@@ -195,9 +195,9 @@ h2 {
     /* background-color: #a5db49; */
 }
 
-[class^="choice"] {
-    height: 400px;
-    width: 300px;
+.choice {
+    height: 90%;
+    width: 80%;
 
     display: flex;
     flex-direction: column;
@@ -211,10 +211,10 @@ h2 {
 
 }
 
-/* [class^="choice"]:hover {
+.choice:hover {
     scale: 1.3;
     transition: all 0.3s ease-in-out;
-} */
+}
 
 .picMeal {
     height: 80%;
@@ -227,15 +227,46 @@ h2 {
 .nameMeal {
     height: 10%;
     width: 90%;
-    background-color: grey;
+    /* background-color: grey; */
+    font-weight: 600;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
+
+.modal {
+    height: 90%;
+    width: 40%;
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+[class^=picMeal] img {
+    max-height: 100%;
+}
+
+[class^=picMeal] {
+    width: 90%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 
 /* bouton changer */
 .propositions #cta {
     width: 100%;
 }
 
-#changer {
+#change {
     background-color: #40AE44;
     border-radius: 30px;
     border: none;
@@ -243,6 +274,11 @@ h2 {
     font-weight: 500;
     font-size: 20px;
     padding: 0 5%;
+}
+
+#change:active {
+    box-shadow: inset 2px 2px 8px black;
+    transform: translate(1px, 1px);
 }
 
 .disclaimer {
@@ -308,43 +344,26 @@ footer img {
 
 }
 
-.modal2 {
-    transition: all 0.3s ease-in-out;
 
-}
-
-[class^='modal'] {
-    height: 400px;
-    width: 300px;
-    transition: all 1s ease-in-out;
+.modaltest {
     display: flex;
     justify-content: center;
     align-items: center;
 
-}
-
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: fixed;
     height: 100vh;
     width: 100vw;
     top: 0;
     left: 0;
     z-index: 1;
-    /* background-color: red; */
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .test {
-    height: 100%;
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-
-    transition: all 1s ease-in-out;
-    /* background-color: red; */
+    scale: 2.5;
+    background-color: red;
+    /* top: 0;
+    left: 0; */
+    position: sticky;
     z-index: 1;
 }
