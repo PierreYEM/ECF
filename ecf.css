@@ -6,6 +6,7 @@
 
 p {
     font-size: 1em;
+    margin: 0;
 }
 
 a {
@@ -17,10 +18,6 @@ strong {
     font-weight: 400;
 }
 
-#presentation img {
-    max-height: 100%;
-    max-width: 50%;
-}
 
 .scrollOnOff {
     overflow-y: hidden;
@@ -38,17 +35,6 @@ button {
     color: white;
 }
 
-ul {
-    margin-top: 0;
-    padding: 0;
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-}
-
-li {
-    display: inline-block;
-}
 
 /*  */
 
@@ -63,14 +49,15 @@ nav {
     top: 0;
 
     display: flex;
-    justify-content: space-between;
 
-    background-color: #f81e1e;
+    /* background-color: #f81e1e; */
+    background-color: #D9D9D9;
 }
 
 #logo {
     display: flex;
     align-items: center;
+    width: 15%;
 }
 
 #logo img {
@@ -91,7 +78,7 @@ nav {
 
 h1 {
     font-weight: bold;
-    font-size: 80px;
+    font-size: 60px;
     margin: 0;
 }
 
@@ -108,12 +95,13 @@ h1 {
 h2 {
     font-size: 20px;
     font-style: italic;
-    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 0;
 }
 
 
 .nav {
-    /* background-color: green; */
+    width: 15%;
 }
 
 /*  */
@@ -122,7 +110,7 @@ h2 {
 /* Section Presentation */
 
 #presentation {
-    margin-top: 200px;
+    margin-top: 10%;
     height: 85vh;
     width: 100%;
     /* background-color: grey; */
@@ -130,33 +118,45 @@ h2 {
 
 .firstDescription,
 .secondDescription {
-    height: 269px;
-    width: 907px;
+    height: 40%;
+    width: 80%;
 
 
-    /* height: 35%;
-    width: 50%; */
     display: flex;
     align-items: center;
     margin: auto;
     /* background-color: green; */
-    justify-content: space-between;
+    justify-content: space-around;
 
 }
 
 .firstDescription {}
 
-.firstDescription p,
-.secondDescription p {
-    width: 40%;
-    margin: 50px;
+
+
+.textIntro {
+    width: 30%;
+    overflow-y: auto;
+    display: flex;
+    justify-content: start;
 }
 
+.textIntro:nth-child(2) {
+    width: 30%;
+    display: flex;
+    justify-content: end;
+}
 
+.introPic {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
 
-.secondDescription {
-
-    margin-top: 50px;
+.introPic img {
+    max-width: 100%;
+    max-height: auto;
 }
 
 #cta {
@@ -168,7 +168,21 @@ h2 {
     font-weight: 500;
     font-size: 20px;
     padding: 0 10px;
+    transition: 0.3s;
 }
+
+#cta:hover {
+    translate: -5px -5px;
+    box-shadow: 5px 5px 10px black;
+
+}
+
+#cta:active {
+    box-shadow: none;
+    translate: 0 0;
+    transition: 0.1s;
+}
+
 
 .cta {
     display: flex;
@@ -187,7 +201,6 @@ h2 {
 
     height: 85vh;
     width: 100%;
-    /* background-color: rgb(35, 65, 171); */
 }
 
 #propositionsTitle {
@@ -197,7 +210,6 @@ h2 {
     justify-content: center;
     align-items: center;
 
-    /* background-color: rgb(143, 137, 137); */
     font-size: 35px;
 }
 
@@ -216,11 +228,10 @@ h2 {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* background-color: #a5db49; */
 }
 
 .choice {
-    height: 90%;
+    height: 100%;
     width: 80%;
 
     display: flex;
@@ -234,9 +245,13 @@ h2 {
 
 }
 
+.choice:hover {
+    cursor: pointer;
+}
+
 .choiceModal {
-    height: 800px;
-    width: 1500px;
+    height: 90%;
+    width: 80%;
 
     display: flex;
     align-items: start;
@@ -256,27 +271,32 @@ h2 {
 
 
 .picMeal img {
-    max-height: 100%;
-    box-shadow: rgb(0 0 0 / 25%) 0px 0px 10px 8px;
+    max-width: 100%;
+    /* box-shadow: rgb(0 0 0 / 25%) 0px 0px 10px 8px; */
+
 }
 
 .picMeal {
-    height: 75%;
+    height: 90%;
     width: 90%;
     display: flex;
     justify-content: center;
-
+    box-sizing: content-box;
     transition: all 1s ease-in-out;
 }
 
 .picMealModal {
-    height: 500px;
-
+    width: 90%;
+    height: 60%;
     display: flex;
     justify-content: center;
 
     transition: all 1s ease-in-out;
 
+}
+
+.picMealModal img {
+    box-shadow: rgb(0 0 0 / 25%) 0px 0px 10px 8px;
 }
 
 .nameMeal {
@@ -288,6 +308,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: content-box;
 
     transition: all 0.5s ease-in-out;
 
@@ -295,7 +316,7 @@ h2 {
 
 .nameMealModal {
 
-    height: 200px;
+    height: 25%;
     font-size: 35px;
 
     transition: all 0.5s ease-in-out;
@@ -305,8 +326,8 @@ h2 {
 
 
 .gauche {
-    height: 400px;
-    width: 80%;
+    height: 94%;
+    width: 94%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -315,11 +336,11 @@ h2 {
 }
 
 .gaucheModal {
-    height: 800px;
-    width: 50%;
+    height: 100%;
+    width: 45%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -330,46 +351,53 @@ h2 {
 
 .ingredientsModal {
     display: flex;
-    overflow-y: scroll;
-
     flex-direction: column;
-    /* flex-wrap: wrap; */
+    overflow-y: auto;
 
+padding: 20px;
+    height: 100%;
+    width: 55%;
 
-    height: 800px;
-    width: 1050px;
-
-    transition: all 2s ease-in-out;
+    transition: all 0.5s ease-in-out;
 
 }
 
-/* body::-webkit-scrollbar{color: red;} */
-
+.nameIng {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.detailIng{}
 
 .modal {
     height: 90%;
     width: 40%;
-    transition: all 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background-color: #FFFFFF88;
 
 }
+
+
+
+
 
 .modalOn {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    position: fixed;
     height: 100vh;
     width: 100vw;
     top: 0;
     left: 0;
+    position: fixed;
+    background-color: #FFFFFF88;
+
     z-index: 1;
-    transition: all 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 
@@ -388,11 +416,20 @@ h2 {
     font-weight: 500;
     font-size: 20px;
     padding: 0 5%;
+
+    transition: 0.3s ease-in-out;
+}
+
+#change:hover {
+    translate: -5px -5px;
+    box-shadow: 5px 5px 10px black;
+
 }
 
 #change:active {
-    box-shadow: inset 2px 2px 8px black;
-    transform: translate(1px, 1px);
+    box-shadow: none;
+    translate: 0 0;
+    transition: 0.1s;
 }
 
 .disclaimer {
@@ -462,10 +499,5 @@ footer img {
 
 
 .test {
-    scale: 2.5;
-    background-color: red;
-    /* top: 0;
-    left: 0; */
-    position: sticky;
-    z-index: 1;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%)
 }

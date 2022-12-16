@@ -2,10 +2,13 @@
 
 const randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php",
     mealId = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772",
+    allIng = "https://www.themealdb.com/api/json/v1/1/list.php?i=list",
     body = document.querySelector('body');
 
 
-let change = document.querySelector('#change');
+
+let change = document.querySelector('#change'),
+    x = "";
 // ingredients = document.querySelector('.ingredients'),
 
 
@@ -44,6 +47,8 @@ change.addEventListener("click", () => getRandomMeal())
 for (let i = 0; i < list.length; i++) {
 
     list[i].addEventListener('click', (e) => {
+
+        ///désactiver la barre de scroll durant la modale
         body.classList.toggle('scrollOnOff');
 
         gauche[i].classList.toggle('gaucheModal');
@@ -91,12 +96,13 @@ async function getRecipe() {
             json.meals[0].strIngredient19,
             json.meals[0].strIngredient20,];
 
-            for (let i = 0; i < 20; i++) {
+            for (let c = 0; c < 20; c++) {
 
-                if (!(tab[i] == null) ^ (tab[i] == "")) {
+                if (!(tab[c] == null) ^ (tab[c] == "")) {
 
-                    console.log("vide"); ingredients.innerHTML = ingredients.innerHTML + '<ul>' + '<li>' + tab[i] + '</li></ul>'
-
+                    ingredients[i].innerHTML = ingredients[i].innerHTML + '<div>' + tab[c] + '</div>';
+                    let listIng = [...document.querySelectorAll("div")];
+                    console.log(listIng);
                 }
             }
         })
@@ -159,11 +165,55 @@ async function getRandomMeal() {
 
                 for (let c = 0; c < 20; c++) {
 
+                    ///ajout de nom des ingrédients///
                     if (!(tab[c] == null) ^ (tab[c] == "")) {
-                        ingredients[i].innerHTML = ingredients[i].innerHTML + '<ul>' + '<li>' + tab[c] + '</li></ul>';
+                        let nameIng = document.createElement('div'),
+                            detailIng = document.createElement('div');
+                        textIng = document.createTextNode(tab[c]);
+                        nameIng.classList.add('nameIng');
+                        detailIng.classList.add('detailIng');
+                        detailIng.setAttribute('data-id', tab[c])
+                        nameIng.appendChild(textIng);
+                        nameIng.appendChild(detailIng);
+
+                        ingredients[i].appendChild(nameIng);
+
+                        // fetch(allIng)
+                        //     .then(data => data.json())
+                        //     .then(ing => {
+                        //         console.log(json);
+
+                        //         for (let i = 0; i < ing.meals.length; i++) {
+
+
+
+                        //             if (ing.meals[i].strIngredient == tab[c]) {
+
+                        //                 console.log(ing.meals[i].strDescription);
+
+                        //                 detailIng.innerHTML = ing.meals[i].strDescription;
+                        //                 if
+                        //                     (ing.meals[i].strDescription == null ^ ing.meals[i].strDescription == "") { detailIng.innerHTML = "No description available" }
+
+
+
+                        //             }
+
+                        //         }
+
+
+                        //     })
+
+
+  let a=[...document.querySelectorAll('[data-id]')];
+                   console.log(a);
 
 
                     }
+
+
+                 
+
 
                 };
 
@@ -172,33 +222,31 @@ async function getRandomMeal() {
             })
     }
 
-    let a = document.createElement('div'),
-        li = document.querySelector('li'),
-        ul = [...document.querySelectorAll('ul')];
-    console.log(ul);
 
-    fetch("https://www.themealdb.com/api/json/v1/1/list.php?i=list")
-        .then(data => data.json())
-        .then(json => {
-            console.log(json);
-            for (let i = 0; i < ul.length; i++) {
-
-                console.log(ul[i]);
-
-                if (json[0].strIngredient !== "poulet") {
-                    ul[i].innerHTML = ul[i].innerHTML + json.meals[0].strDescription
-
-                }
-
-
-
-            }
-
-
-
-
-
-
-        })
 
 }
+
+// let a = document.querySelector('.ab')
+
+// fetch("https://www.themealdb.com/api/json/v1/1/list.php?i=list")
+//     .then(data => data.json())
+//     .then(json => {
+//         console.log(json);
+//         console.log(json.meals[0].strIngredient);
+//         console.log(json.meals.length);
+//         for (let i = 0; i < json.meals.length; i++) {
+//             if (json.meals[i].strIngredient == "Salmon") {
+
+//                 console.log(json.meals[i].strDescription);
+
+//                 a.innerHTML = json.meals[i].strDescription;
+//                 if
+//                     (json.meals[i].strDescription == null) { a.innerHTML = "No description available" }
+//             }
+
+//         }
+
+
+
+
+//     })
