@@ -133,97 +133,100 @@ async function getRandomMeal() {
 
     for (let i = 0; i < picture.length; i++) {
         ingredients[i].innerHTML = "";
-        fetch(randomMeal)
-            .then(data => data.json())
-            .then(json => {
+        let response = await fetch(randomMeal);
+        response = await response.json();
 
-
-                info[0].picture[i].innerHTML = '<img src=' + json.meals[0].strMealThumb + ' alt="' + json.meals[0].strMeal + '">';
-                info[0].nameMeal[i].innerHTML = json.meals[0].strMeal
-
-                ///Afficher les ingrédients correspondants au plat///
-                let tab = [json.meals[0].strIngredient1,
-                json.meals[0].strIngredient2,
-                json.meals[0].strIngredient3,
-                json.meals[0].strIngredient4,
-                json.meals[0].strIngredient5,
-                json.meals[0].strIngredient6,
-                json.meals[0].strIngredient7,
-                json.meals[0].strIngredient8,
-                json.meals[0].strIngredient9,
-                json.meals[0].strIngredient10,
-                json.meals[0].strIngredient11,
-                json.meals[0].strIngredient12,
-                json.meals[0].strIngredient13,
-                json.meals[0].strIngredient14,
-                json.meals[0].strIngredient15,
-                json.meals[0].strIngredient16,
-                json.meals[0].strIngredient17,
-                json.meals[0].strIngredient18,
-                json.meals[0].strIngredient19,
-                json.meals[0].strIngredient20,];
-
-                for (let c = 0; c < 20; c++) {
-
-                    ///ajout de nom des ingrédients///
-                    if (!(tab[c] == null) ^ (tab[c] == "")) {
-                        let nameIng = document.createElement('div'),
-                            detailIng = document.createElement('div');
-                        textIng = document.createTextNode(tab[c]);
-                        nameIng.classList.add('nameIng');
-                        detailIng.classList.add('detailIng');
-                        detailIng.setAttribute('data-id', tab[c])
-                        nameIng.appendChild(textIng);
-                        nameIng.appendChild(detailIng);
-
-                        ingredients[i].appendChild(nameIng);
-
-                        // fetch(allIng)
-                        //     .then(data => data.json())
-                        //     .then(ing => {
-                        //         console.log(json);
-
-                        //         for (let i = 0; i < ing.meals.length; i++) {
+        picture.forEach(elment => {
+            info[0].picture[i].innerHTML = '<img src=' + response.meals[0].strMealThumb + ' alt="' + response.meals[0].strMeal + '">';
+            info[0].nameMeal[i].innerHTML = response.meals[0].strMeal
+        })
 
 
 
-                        //             if (ing.meals[i].strIngredient == tab[c]) {
-
-                        //                 console.log(ing.meals[i].strDescription);
-
-                        //                 detailIng.innerHTML = ing.meals[i].strDescription;
-                        //                 if
-                        //                     (ing.meals[i].strDescription == null ^ ing.meals[i].strDescription == "") { detailIng.innerHTML = "No description available" }
-
-
-
-                        //             }
-
-                        //         }
-
-
-                        //     })
-
-
-  let a=[...document.querySelectorAll('[data-id]')];
-                   console.log(a);
-
-
-                    }
+        ///Afficher les ingrédients correspondants au plat///
+        let tab = [response.meals[0].strIngredient1,
+        response.meals[0].strIngredient2,
+        response.meals[0].strIngredient3,
+        response.meals[0].strIngredient4,
+        response.meals[0].strIngredient5,
+        response.meals[0].strIngredient6,
+        response.meals[0].strIngredient7,
+        response.meals[0].strIngredient8,
+        response.meals[0].strIngredient9,
+        response.meals[0].strIngredient10,
+        response.meals[0].strIngredient11,
+        response.meals[0].strIngredient12,
+        response.meals[0].strIngredient13,
+        response.meals[0].strIngredient14,
+        response.meals[0].strIngredient15,
+        response.meals[0].strIngredient16,
+        response.meals[0].strIngredient17,
+        response.meals[0].strIngredient18,
+        response.meals[0].strIngredient19,
+        response.meals[0].strIngredient20,];
 
 
-                 
+        for (let c = 0; c < 20; c++) {
+
+            ///ajout de nom des ingrédients///
+            if (!(tab[c] == null) ^ (tab[c] == "")) {
+
+                console.log(tab[c]);
+
+                let nameIng = document.createElement('div'),
+
+                    detailIng = document.createElement('div');
+                textIng = document.createTextNode(tab[c]);
+                nameIng.classList.add('nameIng');
+                detailIng.classList.add('detailIng');
+                detailIng.setAttribute('data-id', tab[c]);
+
+                nameIng.appendChild(textIng);
+                nameIng.appendChild(detailIng);
 
 
-                };
 
+                ingredients[i].appendChild(nameIng);
 
-                // console.log(json)
-            })
+            }
+
+        }
+
     }
 
+    let a = [...document.querySelectorAll('[data-id]')];
+    b = a.map(element => '' + element.dataset.id + '');
+    console.log(a);
+    console.log(b);
+    console.log(a[0]);
+    console.log(a[0].dataset.id);
+    for (let c = 0; c < a.length; c++) {
 
 
+
+        fetch(allIng)
+            .then(data => data.json())
+            .then(ing => {
+                console.log(ing);
+                console.log(a[0].dataset.id);
+                for (let i = 0; i < ing.meals.length; i++) {
+
+
+                    if (ing.meals[i].strIngredient === "Oil") {
+
+                        a[c].innerHTML = ing.meals[i].strDescription;
+                        if
+                            (ing.meals[i].strDescription == null ^ ing.meals[i].strDescription == "") { a[c].innerHTML = "No description available" }
+                    } else { console.log("nope"); }
+                }
+
+
+
+            })
+
+
+
+    }
 }
 
 // let a = document.querySelector('.ab')
