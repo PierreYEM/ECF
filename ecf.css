@@ -510,7 +510,7 @@ footer img:hover {
     font-size: 1.5rem;
 }
 
-/* @media only screen and (max-width: 425px) {
+@media only screen and (max-width: 425px) {
 
     #logo,
     .nav {
@@ -655,5 +655,5 @@ footer img:hover {
     }
 
 }
- */
+
 

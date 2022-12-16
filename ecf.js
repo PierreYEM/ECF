@@ -78,7 +78,7 @@ async function getRandomMeal() {
         let response = await fetch(randomMeal);
         response = await response.json();
         //images correspondants aux plats
-        picture.forEach(elment => {
+        picture.forEach(element => {
             info[0].picture[i].innerHTML = '<img src=' + response.meals[0].strMealThumb + ' alt="' + response.meals[0].strMeal + '">';
             info[0].nameMeal[i].innerHTML = response.meals[0].strMeal
         })
