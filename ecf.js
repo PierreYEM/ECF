@@ -7,7 +7,11 @@ const randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php",
 
 
 
-let change = document.querySelector('#change');
+let change = document.querySelector('#change'),
+    choice1 = document.querySelector('.choice1'),
+    choice2 = document.querySelector('.choice2'),
+    choice3 = document.querySelector('.choice3');
+
 
 
 ///déclaration de tableaux facilitant mon code///
@@ -17,33 +21,74 @@ let picture = [...document.querySelectorAll('.picMeal')],
     nameMeal = [...document.querySelectorAll('.nameMeal')],
 
     ///tableaux pour la modale
-    list = [...document.querySelectorAll('.choice')],
+    choices = [choice1, choice2, choice3],
     modal = [...document.querySelectorAll('.modal')],
 
     ingredients = [...document.querySelectorAll('.ingredients')],
     gauche = [...document.querySelectorAll('.gauche')],
 
-    footerLogo = [...document.querySelectorAll('.t')];
+    footerLogo = [...document.querySelectorAll('.networks')];
 
 
 ///Rassemblement des différents tableaux en 1 avec objets ( pour le Fun)  
-let info = [{ picture, nameMeal }, { list, modal }];
+let info = [{ picture, nameMeal }, { choices, modal }];
 
 
 ///Bouton changer = consiste à rafraichir la page afin que le fetch se relance
 change.addEventListener("click", () => getRandomMeal())
 
 ///Ouverture de fenêtre modale   
-for (let i = 0; i < list.length; i++) {
+for (let i = 0; i < choices.length; i++) {
 
-    list[i].addEventListener('click', (e) => {
+    choices[i].addEventListener('click', () => {
 
         ///désactiver la barre de scroll durant la modale
         body.classList.toggle('scrollOnOff');
 
         gauche[i].classList.toggle('gaucheModal');
 
-        list[i].classList.toggle('choiceModal');
+        switch (choices[i]) {
+            case choice1:
+                if (window.screen.width > 426) {
+                    choice2.classList.toggle('slideLeft');
+                    choice3.classList.toggle('slideRight');
+                }
+                else {
+                    choice2.classList.toggle('slideUp');
+                    choice3.classList.toggle('slideDown');
+                }
+
+                break;
+            case choice2:
+                if (window.screen.width > 426) {
+                    choice1.classList.toggle('slideLeft');
+                    choice3.classList.toggle('slideRight');
+                }
+                else {
+                    choice1.classList.toggle('slideUp');
+                    choice3.classList.toggle('slideDown');
+                }
+
+                break;
+            case choice3:
+                if (window.screen.width > 426) {
+                    choice1.classList.toggle('slideLeft');
+                    choice2.classList.toggle('slideRight');
+                }
+                else {
+                    choice1.classList.toggle('slideUp');
+                    choice2.classList.toggle('slideDown');
+                }
+
+                break;
+
+            default:
+                break;
+        }
+
+        choices[i].classList.toggle('choiceModal');
+
+
         setTimeout(() => {
             ingredients[i].classList.toggle('ingredientsModal');
 
@@ -52,7 +97,6 @@ for (let i = 0; i < list.length; i++) {
 
         nameMeal[i].classList.toggle('nameMealModal');
         picture[i].classList.toggle('picMealModal')
-        modal[i].classList.toggle('modalOn');
 
     })
 
@@ -60,12 +104,12 @@ for (let i = 0; i < list.length; i++) {
 
 ///appel de la fonction principale
 getRandomMeal();
-// for (let i = 0; i < footerLogo.length; i++) {
-//     footerLogo.addEventListener('click', () => {
+for (let i = 0; i < footerLogo.length; i++) {
+    footerLogo[i].addEventListener('click', () => {
 
-//         alert("En construction par manque de temps \nl'administration vous présente ses plus plates excuses pour le dérangement");
-//     })
-// }
+        alert("En construction par manque de temps \nl'administration vous présente ses plus plates excuses pour le dérangement");
+    })
+}
 
 
 
