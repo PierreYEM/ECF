@@ -47,6 +47,7 @@ for (let i = 0; i < choices.length; i++) {
 
         gauche[i].classList.toggle('gaucheModal');
 
+        /* switch condition responsive pour format mobile */
         switch (choices[i]) {
             case choice1:
                 if (window.screen.width > 426) {
@@ -130,46 +131,40 @@ async function getRandomMeal() {
 
 
         ///Afficher les ingrédients correspondants au plat///
-        let tab = [response.meals[0].strIngredient1,
-        response.meals[0].strIngredient2,
-        response.meals[0].strIngredient3,
-        response.meals[0].strIngredient4,
-        response.meals[0].strIngredient5,
-        response.meals[0].strIngredient6,
-        response.meals[0].strIngredient7,
-        response.meals[0].strIngredient8,
-        response.meals[0].strIngredient9,
-        response.meals[0].strIngredient10,
-        response.meals[0].strIngredient11,
-        response.meals[0].strIngredient12,
-        response.meals[0].strIngredient13,
-        response.meals[0].strIngredient14,
-        response.meals[0].strIngredient15,
-        response.meals[0].strIngredient16,
-        response.meals[0].strIngredient17,
-        response.meals[0].strIngredient18,
-        response.meals[0].strIngredient19,
-        response.meals[0].strIngredient20,];
 
-        ///liste des ingrédients///
+        /* Créer un tableau vierge à chaque repas et le remplir avec les 20 emplacements d'ingrédients*/
+        let tabIng = new Array;
+
+        for (let i = 1; i < 20; i++) {
+
+            tabIng.push(response.meals[0][`strIngredient${i}`])
+
+        }
+        /*  */
+
+        /*  */
         for (let c = 0; c < 20; c++) {
 
-            // si l'emplacement de l'ingrédient est différent de " " ou exclusif Null alors je procède aux instructions de cration de div et de l'ajout de l'ingrédient du plat//
-            if (!(tab[c] == null) ^ (tab[c] == "")) {
+            /// Si l'ingrédient est "true" soit différent de null ou "" alors on procède aux instructions de création de div et de texte
+            if (tabIng[c]) {
 
-                let nameIng = document.createElement('div'),
+                const nameIng = document.createElement('div'),
                     detailIng = document.createElement('div');
 
                 // instructions de création de bloc aliments
-                textIng = document.createTextNode(tab[c]);
+                textIng = document.createTextNode(tabIng[c]);
                 nameIng.classList.add('nameIng');
                 detailIng.classList.add('detailIng');
-                detailIng.setAttribute('data-id', tab[c]);
+                detailIng.setAttribute('data-id', tabIng[c]);
                 nameIng.appendChild(textIng);
                 nameIng.appendChild(detailIng);
 
-                //ajout des ingredients
+                //ajout des ingredients dans la partie correspondante
                 ingredients[i].appendChild(nameIng);
+
+
+
+
 
                 // description de chaque aliments ( en construction)
 
@@ -198,7 +193,7 @@ async function getRandomMeal() {
 
         }
 
+
+
     }
-
 }
-
