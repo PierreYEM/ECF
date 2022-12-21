@@ -292,9 +292,10 @@ nav {
 
 
 [class^=choice]:hover {
-    scale: 1.3;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    box-shadow: 16px 16px 10px black;
+    transform: translateX(-4px) translateY(-4px);
 }
 
 .choiceModal:hover {
@@ -801,3 +802,38 @@ footer img:hover {
         scale: 0.8;
     }
 }
+
+
+
+
+
+.doubleFace {
+    perspective: 1000px; /* create a 3D perspective */
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .doubleFace .front,
+  .doubleFace .back {
+    width: 50vw; /* set the width of both sides to 100% */
+    height: 100vh; /* set the height of both sides to 100% */
+    backface-visibility: hidden; /* hide the back face */
+    transform-style: preserve-3d; /* preserve the 3D space */
+    position: absolute; /* position both sides absolutely */
+    transition: transform 0.6s; /* add a transition effect when flipping */
+    background-color: grey;
+  }
+  
+  .doubleFace .back {
+    transform: rotateY(180deg); /* rotate the back face 180 degrees */
+  }
+  
+  .doubleFace.flipped .front {
+    transform: rotateY(180deg); /* rotate the front face 180 degrees when flipped */
+  }
+  
+  .doubleFace.flipped .back {
+    transform: rotateY(360deg); /* rotate the back face 360 degrees (back to original position) when flipped */
+  }

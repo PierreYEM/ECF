@@ -197,3 +197,8 @@ async function getRandomMeal() {
 
     }
 }
+
+// const doubleSided = document.querySelector('.double-sided');
+// doubleSided.addEventListener('click', function () {
+//     this.classList.toggle('flipped');
+// });
